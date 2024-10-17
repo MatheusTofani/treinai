@@ -1,22 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import Titulo from './src/components/Title';
+import { Container } from './style';
+import Form from './src/components/Form';
 
 export default function App() {
   return (
-    <View >
-      <Teste>Ola <Logo>TreinAi</Logo></Teste>
-      <StatusBar style="auto" />
-    </View>
+    <Container>
+      <Titulo />
+      <Form />
+    </Container>
   );
 }
 
-const Teste = styled.Text `
 
-font-size: 50px;
-`
-
-const Logo = styled.Text `
-font-weight: bold;
-color: #E16517;
-`
