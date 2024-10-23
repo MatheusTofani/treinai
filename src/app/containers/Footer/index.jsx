@@ -1,38 +1,33 @@
-import * as React from 'react';
+import React from 'react';
 import { FooterContainer, FooterContainerIcon, FooterIcon, FooterItem, FooterText } from "./style";
 import calendario from '../../../assets/calendario.png';
 import grafico from '../../../assets/grafico.png';
 import trofeu from '../../../assets/trofeu.png';
 import user from '../../../assets/user.png';
 import { useNavigation } from '@react-navigation/native';
-import { Alert, Button } from 'react-native';
-
+import { TouchableOpacity } from 'react-native';
 
 const Footer = () => {
     const navigation = useNavigation(); // Hook de navegação
 
     return (
-
-
        <FooterContainer>
-
             {/* Ícone de Calendário */}
             <FooterItem>
-                <FooterText 
-                  source={calendario} 
-                  
-                />
+                <TouchableOpacity onPress={() => {
+                    navigation.navigate('Calendar'); // Navega para Calendário
+                }}>
+                    <FooterText source={calendario} />
+                </TouchableOpacity>
             </FooterItem>
 
             {/* Ícone de Estatísticas */}
             <FooterItem>
-                <FooterText 
-                  source={grafico} 
-                  onPress={() => {
-                      Alert.alert('Estatísticas clicado!'); // Teste de clique
-                      navigation.navigate('Stats'); // Navegar para a tela de Estatísticas
-                  }} 
-                />
+                <TouchableOpacity onPress={() => {
+                    navigation.navigate('Stats'); // Navega para Estatísticas
+                }}>
+                    <FooterText source={grafico} />
+                </TouchableOpacity>
             </FooterItem>
 
             {/* Botão Central */}
@@ -44,25 +39,22 @@ const Footer = () => {
 
             {/* Ícone de Troféu */}
             <FooterItem>
-                <FooterText 
-                  source={trofeu} 
-                  onPress={() => {
-                      Alert.alert('Troféu clicado!'); // Teste de clique
-                  }} 
-                />
+                <TouchableOpacity onPress={() => {
+                    // Ação de clique para o troféu
+                }}>
+                    <FooterText source={trofeu} />
+                </TouchableOpacity>
             </FooterItem>
 
             {/* Ícone de Usuário */}
             <FooterItem>
-                <FooterText 
-                  source={user} 
-                  onPress={() => {
-                      Alert.alert('Usuário clicado!'); // Teste de clique
-                  }} 
-                />
+                <TouchableOpacity onPress={() => {
+                    // Ação de clique para o usuário
+                }}>
+                    <FooterText source={user} />
+                </TouchableOpacity>
             </FooterItem>
         </FooterContainer>
-
     );
 }
 
