@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 export const FooterContainer = styled.View`
   right: 0;
   position: absolute;
-  bottom: 0;
+  bottom: 50px;
   flex-direction: row;
   height: 50px;
   width: 100%;
