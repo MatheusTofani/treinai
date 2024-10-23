@@ -6,11 +6,13 @@ import trofeu from '../../../assets/trofeu.png';
 import user from '../../../assets/user.png';
 import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Footer = () => {
     const navigation = useNavigation(); // Hook de navegação
 
     return (
+
        <FooterContainer>
             {/* Ícone de Calendário */}
             <FooterItem>

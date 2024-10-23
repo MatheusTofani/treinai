@@ -1,13 +1,14 @@
 import styled from "styled-components/native";
 
-export const FooterContainer = styled.View`
+export const FooterContainer = styled.SafeAreaView`
   right: 0;
   position: absolute;
-  bottom: 50px;
+  bottom: 0;
   flex-direction: row;
   height: 50px;
   width: 100%;
   background-color: #fafafa;
+ 
 `;
 
 export const FooterItem = styled.View`
