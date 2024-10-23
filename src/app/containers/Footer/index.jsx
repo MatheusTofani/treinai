@@ -40,7 +40,7 @@ const Footer = () => {
             {/* Ícone de Troféu */}
             <FooterItem>
                 <TouchableOpacity onPress={() => {
-                    // Ação de clique para o troféu
+                    navigation.navigate('Ranking');
                 }}>
                     <FooterText source={trofeu} />
                 </TouchableOpacity>
@@ -49,7 +49,7 @@ const Footer = () => {
             {/* Ícone de Usuário */}
             <FooterItem>
                 <TouchableOpacity onPress={() => {
-                    // Ação de clique para o usuário
+                    navigation.navigate('Workout');
                 }}>
                     <FooterText source={user} />
                 </TouchableOpacity>
