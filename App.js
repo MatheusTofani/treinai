@@ -7,12 +7,14 @@ import RankingScreen from './src/app/containers/RankingScreen';
 import WorkoutScreen from './src/app/containers/WorkoutScreen';
 import { NavigationContainer } from '@react-navigation/native'; // Para a navegação
 import { createNativeStackNavigator } from '@react-navigation/native-stack'; // Navegação de Stack 
+import Header from './src/app/containers/Header';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
+     <Header />
       <Container>
         <Stack.Navigator screenOptions={{ headerShown: false }}> 
           <Stack.Screen name="Calendar" component={CalendarScreen} /> 
