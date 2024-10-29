@@ -2,7 +2,7 @@
 import React, { useRef, useMemo } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { BottomSheetModal, BottomSheetModalProvider, BottomSheetView } from '@gorhom/bottom-sheet';
-import { FooterContainer, FooterContainerIcon, FooterIcon, FooterItem, FooterText } from "./style";
+import { Button, FooterContainer, FooterContainerIcon, FooterIcon, FooterItem, FooterText, ModalButtonText } from "./style";
 import calendario from '../../../assets/calendario.png';
 import grafico from '../../../assets/grafico.png';
 import trofeu from '../../../assets/trofeu.png';
@@ -33,10 +33,33 @@ const Footer = () => {
                     handleIndicatorStyle={{ backgroundColor: '#ccc' }}
                 >
                     <BottomSheetView style={{ flex: 1, alignItems: 'center', padding: 16 }}>
-                        <Text style={{ fontSize: 18 }}>Conteúdo do Bottom Sheet Modal</Text>
-                        <TouchableOpacity onPress={() => modalRef.current?.dismiss()} style={{ marginTop: 20 }}>
-                            <Text style={{ color: 'blue' }}>Fechar Modal</Text>
-                        </TouchableOpacity>
+                        <Button
+                            
+                            onPress={() => console.log("Registrar Treino")}
+                        >
+                            <ModalButtonText>Registrar Treino</ModalButtonText>
+                        </Button>
+
+                        <Button
+                            
+                            onPress={() => console.log("Treino Sugerido por IA")}
+                        >
+                            <ModalButtonText>Treino Sugerido por IA</ModalButtonText>
+                        </Button>
+
+                        <Button
+                            
+                            onPress={() => console.log("Definir Objetivos")}
+                        >
+                            <ModalButtonText>Definir Objetivos</ModalButtonText>
+                        </Button>
+
+                        <Button
+                       
+                            onPress={() => console.log("Notas e Reflexões")}
+                        >
+                            <ModalButtonText>Notas e Reflexões</ModalButtonText>
+                        </Button>
                     </BottomSheetView>
                 </BottomSheetModal>
 
