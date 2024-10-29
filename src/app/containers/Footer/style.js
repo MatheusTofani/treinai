@@ -17,6 +17,21 @@ export const FooterItem = styled.View`
   align-items: center;
 `;
 
+export const Button = styled.TouchableOpacity`
+    background-color: #4CAF50; 
+    padding: 24px 12px;
+    border-radius: 8px;
+    margin: 0px 10px;
+    align-items: center;
+    width: 90%;
+`;
+
+export const ModalButtonText = styled.Text`
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+`;
+
 export const FooterText = styled.Image`
   color: #f5310a;
   font-size: 30px;
