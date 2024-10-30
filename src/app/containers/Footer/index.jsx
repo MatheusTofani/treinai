@@ -38,6 +38,7 @@ const Footer = () => {
                             onPress={() => console.log("Registrar Treino")}
                         >
                             <ModalButtonText>Registrar Treino</ModalButtonText>
+                            <ModalButtonText>&gt;</ModalButtonText>
                         </Button>
 
                         <Button
@@ -45,6 +46,7 @@ const Footer = () => {
                             onPress={() => console.log("Treino Sugerido por IA")}
                         >
                             <ModalButtonText>Treino Sugerido por IA</ModalButtonText>
+                            <ModalButtonText>&gt;</ModalButtonText>
                         </Button>
 
                         <Button
@@ -52,6 +54,7 @@ const Footer = () => {
                             onPress={() => console.log("Definir Objetivos")}
                         >
                             <ModalButtonText>Definir Objetivos</ModalButtonText>
+                            <ModalButtonText>&gt;</ModalButtonText>
                         </Button>
 
                         <Button
@@ -59,6 +62,7 @@ const Footer = () => {
                             onPress={() => console.log("Notas e Reflexões")}
                         >
                             <ModalButtonText>Notas e Reflexões</ModalButtonText>
+                            <ModalButtonText>&gt;</ModalButtonText>
                         </Button>
                     </BottomSheetView>
                 </BottomSheetModal>
