@@ -21,6 +21,11 @@ const Footer = () => {
         modalRef.current?.present();
     };
 
+    const navigateAndCloseModal = (ScreenName) => {
+        navigation.navigate(ScreenName);
+        modalRef.current?.close();
+    };
+
     return (
         <BottomSheetModalProvider>
             <FooterContainer>
@@ -35,7 +40,7 @@ const Footer = () => {
                     <BottomSheetView style={{ flex: 1, alignItems: 'center', padding: 16 }}>
                         <Button
                             
-                            onPress={() => console.log("Registrar Treino")}
+                            onPress={() => navigateAndCloseModal('RegistrarTreino')}
                         >
                             <ModalButtonText>Registrar Treino</ModalButtonText>
                             <ModalButtonText>&gt;</ModalButtonText>
@@ -43,7 +48,7 @@ const Footer = () => {
 
                         <Button
                             
-                            onPress={() => console.log("Treino Sugerido por IA")}
+                            onPress={() => navigateAndCloseModal('TreinoSugeridoPorIA')}
                         >
                             <ModalButtonText>Treino Sugerido por IA</ModalButtonText>
                             <ModalButtonText>&gt;</ModalButtonText>
@@ -51,7 +56,7 @@ const Footer = () => {
 
                         <Button
                             
-                            onPress={() => console.log("Definir Objetivos")}
+                            onPress={() => navigateAndCloseModal('DefinirObjetivos')}
                         >
                             <ModalButtonText>Definir Objetivos</ModalButtonText>
                             <ModalButtonText>&gt;</ModalButtonText>
@@ -59,7 +64,7 @@ const Footer = () => {
 
                         <Button
                        
-                            onPress={() => console.log("Notas e Reflexões")}
+                            onPress={() => navigateAndCloseModal('NotasEReflexoes')}
                         >
                             <ModalButtonText>Notas e Reflexões</ModalButtonText>
                             <ModalButtonText>&gt;</ModalButtonText>
