@@ -2,11 +2,16 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, Button, Alert, StyleSheet, TouchableOpacity } from 'react-native';
 import { auth } from '../../../firebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import { useUser } from '../../contexts/UserContext';
+import { firestore } from '../../../firebaseConfig';
+import { doc, setDoc, getDoc } from 'firebase/firestore';
 
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const { setUser } = useUser();
 
   const handleLogin = async () => {
     if (!email || !password) {
@@ -16,7 +21,27 @@ const Login = ({ navigation }) => {
 
     setLoading(true);
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      
+      // Pegando o userId do Firebase e atualizando o contexto
+      const userId = userCredential.user.uid;
+
+      // Ref para o documento do usuário no Firestore
+      const userDocRef = doc(firestore, 'users', userId);
+      const userDocSnap = await getDoc(userDocRef);
+
+      if (!userDocSnap.exists()) {
+        // Se o documento não existir, criamos um novo com dados iniciais
+        await setDoc(userDocRef, {
+          name: 'Usuário Novo', // Nome padrão
+          email: userCredential.user.email, // E-mail do usuário
+          createdDate: new Date(), // Data de criação do usuário
+        });
+      }
+
+      setUser(userId); // Atualiza o contexto com o userId
+
       Alert.alert('Login bem-sucedido!');
       navigation.navigate('Stats'); // Ajuste para a tela desejada
     } catch (error) {
