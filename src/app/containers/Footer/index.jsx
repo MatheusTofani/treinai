@@ -1,8 +1,8 @@
 // Footer.js
 import React, { useRef, useMemo } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, SafeAreaView } from 'react-native';
 import { BottomSheetModal, BottomSheetModalProvider, BottomSheetView } from '@gorhom/bottom-sheet';
-import { Button, FooterContainer, FooterContainerIcon, FooterIcon, FooterItem, FooterText, ModalButtonText } from "./style";
+import { Button, FooterContainer, FooterContainerIcon,FooterIcons, FooterIcon, FooterItem, FooterText, ModalButtonText } from "./style";
 import calendario from '../../../assets/calendario.png';
 import grafico from '../../../assets/grafico.png';
 import trofeu from '../../../assets/trofeu.png';
@@ -27,7 +27,9 @@ const Footer = () => {
     };
 
     return (
+        
         <BottomSheetModalProvider>
+            <SafeAreaView>
             <FooterContainer>
                 {/* Bottom Sheet Modal */}
                 <BottomSheetModal
@@ -73,40 +75,45 @@ const Footer = () => {
                 </BottomSheetModal>
 
                 {/* Ícones do Footer */}
-                <FooterItem>
-                    <TouchableOpacity onPress={() => navigation.navigate('Calendar')}>
-                        <FooterText source={calendario} />
-                    </TouchableOpacity>
-                </FooterItem>
+              
+                    <FooterItem onPress={() => navigation.navigate('Calendar')}>
+                        <FooterIcons source={calendario} />
+                        <FooterText>Calendario</FooterText>
+                    </FooterItem>
+               
 
-                <FooterItem>
-                    <TouchableOpacity onPress={() => navigation.navigate('Stats')}>
-                        <FooterText source={grafico} />
-                    </TouchableOpacity>
-                </FooterItem>
+            
+                    <FooterItem onPress={() => navigation.navigate('Stats')}>
+                        <FooterIcons source={grafico} />
+                        <FooterText>Estatisticas</FooterText>
+                    </FooterItem>
+                
 
                 {/* Botão Central para Abrir o Bottom Sheet Modal */}
-                <FooterItem>
-                    <TouchableOpacity onPress={handleOpenModal}>
+            
+                    <FooterItem onPress={handleOpenModal}>
                         <FooterContainerIcon>
                             <FooterIcon>+</FooterIcon>
                         </FooterContainerIcon>
-                    </TouchableOpacity>
-                </FooterItem>
+                    </FooterItem>
 
-                <FooterItem>
-                    <TouchableOpacity onPress={() => navigation.navigate('Ranking')}>
-                        <FooterText source={trofeu} />
-                    </TouchableOpacity>
-                </FooterItem>
+                
+                    <FooterItem onPress={() => navigation.navigate('Ranking')}>
+                    <FooterIcons source={trofeu} />
+                    <FooterText>Ranking</FooterText>
+                    </FooterItem>
+              
 
-                <FooterItem>
-                    <TouchableOpacity onPress={() => navigation.navigate('Workout')}>
-                        <FooterText source={user} />
-                    </TouchableOpacity>
-                </FooterItem>
+                
+                    <FooterItem onPress={() => navigation.navigate('Workout')}>
+                        <FooterIcons source={user} />
+                        <FooterText>Usuario</FooterText>
+                    </FooterItem>
+        
             </FooterContainer>
+            </SafeAreaView >
         </BottomSheetModalProvider>
+       
     );
 };
 

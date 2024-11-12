@@ -5,12 +5,14 @@ export const FooterContainer = styled.SafeAreaView`
   position: absolute;
   bottom: 0;
   flex-direction: row;
-  height: 50px;
+  height: 60px;
   width: 100%;
-  background-color: #fafafa;
+  background-color: #FBFBFB;
+  border-top-width: 1px;
+  border-top-color: #00000034;
 `;
 
-export const FooterItem = styled.View`
+export const FooterItem = styled.TouchableOpacity`
   width: 20%;
   justify-content: center;
   align-items: center;
@@ -36,10 +38,13 @@ export const ModalButtonText = styled.Text`
   font-weight: bold;
 `;
 
-export const FooterText = styled.Image`
+export const FooterIcons = styled.Image`
+ height: 30px;
+`;
+
+export const FooterText = styled.Text`
   color: #f5310a;
-  font-size: 30px;
-  font-weight: bold;
+  font-size: 10px;
 `;
 
 export const FooterContainerIcon = styled.View`
