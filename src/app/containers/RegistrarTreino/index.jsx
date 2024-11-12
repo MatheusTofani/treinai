@@ -12,6 +12,14 @@ const RegistrarTreino = () => {
   const [mostrarFormularioExercicio, setMostrarFormularioExercicio] = useState(false);
   const [novoExercicio, setNovoExercicio] = useState('');
 
+  const [novaSerie, setNovaSerie] = useState({
+    peso: '',
+    repeticoes: '',
+    tempoDescanso: '',
+    nota: '',
+  });
+  
+
   // Função para adicionar um exercício (treino)
   const adicionarExercicio = async () => {  // Marca a função como async
     const exercicio = {
@@ -150,46 +158,85 @@ const RegistrarTreino = () => {
         </View>
       )}
 
-      <FlatList
-        data={exercicios}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <View style={{
-            marginVertical: 8,
-            padding: 12,
-            backgroundColor: '#fff',
-            borderRadius: 8,
-            shadowColor: '#000',
-            shadowOffset: { width: 0, height: 1 },
-            shadowOpacity: 0.3,
-            shadowRadius: 2,
-            elevation: 2,
-          }}>
-            <TouchableOpacity
-              onPress={() => toggleAccordion(item.id)}
-              style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}
-            >
-              <Text style={{ fontSize: 18 }}>{item.nome}</Text>
-              <Icon
-                name={item.isOpen ? 'chevron-up-outline' : 'chevron-down-outline'}
-                size={24}
-                color="grey"
-              />
-            </TouchableOpacity>
+    <FlatList
+      data={exercicios}
+      keyExtractor={(item) => item.id}
+      renderItem={({ item }) => (
+        <View style={{ marginVertical: 8, padding: 12, backgroundColor: '#fff', borderRadius: 8, shadowColor: '#000', shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.3, shadowRadius: 2, elevation: 2 }}>
+          <TouchableOpacity onPress={() => toggleAccordion(item.id)} style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+            <Text style={{ fontSize: 18 }}>{item.nome}</Text>
+            <Icon name={item.isOpen ? 'chevron-up-outline' : 'chevron-down-outline'} size={24} color="grey" />
+          </TouchableOpacity>
 
-            <Collapsible collapsed={!item.isOpen}>
-              <Text style={{ marginTop: 8 }}>Data: {item.data}</Text>
-              {item.medias && (
+          <Collapsible collapsed={!item.isOpen}>
+            <Text style={{ marginTop: 8 }}>Data: {item.data}</Text>
+            {item.medias && (
               <View style={{ marginTop: 8 }}>
                 <Text>Média Peso: {item.medias.peso} kg</Text>
                 <Text>Média Repetições: {item.medias.repeticoes}</Text>
                 <Text>Média Tempo Descanso: {item.medias.tempoDescanso}</Text>
+                <Text>Média Nota: {item.medias.nota}</Text>
               </View>
+            )}
+
+            {/* Botão de Adicionar Série */}
+            <Button title="Adicionar Série" onPress={() => toggleFormularioSerie(item.id)} />
+
+            {/* Formulário de Série */}
+            {item.mostrarFormularioSerie && (
+              <View style={{ marginTop: 8 }}>
+                {/* Campos do formulário de série */}
+                <TextInput
+                  placeholder="Peso (kg)"
+                  value={novaSerie.peso}
+                  onChangeText={(text) => setNovaSerie((prev) => ({ ...prev, peso: text }))}
+                  style={{ borderWidth: 1, padding: 8, marginBottom: 8, borderRadius: 4 }}
+                />
+                <TextInput
+                  placeholder="Repetições"
+                  value={novaSerie.repeticoes}
+                  onChangeText={(text) => setNovaSerie((prev) => ({ ...prev, repeticoes: text }))}
+                  style={{ borderWidth: 1, padding: 8, marginBottom: 8, borderRadius: 4 }}
+                />
+                <TextInput
+                  placeholder="Tempo de Descanso (s)"
+                  value={novaSerie.tempoDescanso}
+                  onChangeText={(text) => setNovaSerie((prev) => ({ ...prev, tempoDescanso: text }))}
+                  style={{ borderWidth: 1, padding: 8, marginBottom: 8, borderRadius: 4 }}
+                />
+                <TextInput
+                  placeholder="Nota (1-10)"
+                  value={novaSerie.nota}
+                  onChangeText={(text) => setNovaSerie((prev) => ({ ...prev, nota: text }))}
+                  style={{ borderWidth: 1, padding: 8, marginBottom: 8, borderRadius: 4 }}
+                />
+                <Button title="Salvar Série" onPress={() => adicionarSerie(item.id, novaSerie)} />
+              </View>
+            )}
+
+            {/* Accordion para listar as séries */}
+            <Button title={item.mostrarSeries ? 'Esconder Séries' : 'Ver Séries'} onPress={() => toggleSeries(item.id)} />
+            <Collapsible collapsed={!item.mostrarSeries}>
+              {item.series.length > 0 ? (
+                item.series.map((serie, index) => (
+                  <View key={index} style={{ marginTop: 8, padding: 8, backgroundColor: '#f0f0f0', borderRadius: 4 }}>
+                    <Text>Série {index + 1}</Text>
+                    <Text>Peso: {serie.peso} kg</Text>
+                    <Text>Repetições: {serie.repeticoes}</Text>
+                    <Text>Tempo de Descanso: {serie.tempoDescanso} s</Text>
+                    <Text>Nota: {serie.nota}</Text>
+                  </View>
+                ))
+              ) : (
+                <Text style={{ marginTop: 8 }}>Nenhuma série registrada.</Text>
               )}
             </Collapsible>
-          </View>
-        )}
-      />
+          </Collapsible>
+        </View>
+      )}
+    />
+
+
     </View>
   );
 };
