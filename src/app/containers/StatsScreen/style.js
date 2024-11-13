@@ -15,6 +15,15 @@ export const Card = styled.View`
   elevation: 3;
 `;
 
+export const ModalContainer = styled.View`
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  elevation: 0;
+`;
+
 export const Nome = styled.Text`
   font-size: 18px;
   font-weight: bold;
