@@ -7,10 +7,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { UserProvider } from './src/app/contexts/UserContext';
 
 import Footer from './src/app/containers/Footer';
-import CalendarScreen from './src/app/containers/CalendarScreen';
-import StatsScreen from './src/app/containers/StatsScreen';
-import RankingScreen from './src/app/containers/RankingScreen';
-import WorkoutScreen from './src/app/containers/WorkoutScreen';
+import CalendarScreen from './src/app/Screen/CalendarScreen';
+import StatsScreen from './src/app/Screen/StatsScreen';
+import RankingScreen from './src/app/Screen/RankingScreen';
+import WorkoutScreen from './src/app/Screen/WorkoutScreen';
 import DefinirObjetivos from './src/app/containers/DefinirObjetivos';
 import NotasEReflexoes from './src/app/containers/NotasEReflexoes';
 import RegistrarTreino from './src/app/containers/RegistrarTreino';
