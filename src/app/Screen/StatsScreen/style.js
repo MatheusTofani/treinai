@@ -13,6 +13,9 @@ export const Card = styled.View`
   margin-bottom: 10px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   elevation: 3;
+  justify-content:space-between;
+  flex-direction: row;
+  align-items:center;
 `;
 
 export const ModalContainer = styled.View`
@@ -34,6 +37,16 @@ export const Peso = styled.Text`
   font-size: 16px;
   color: #555;
   margin-top: 5px;
+`;
+
+export const DeleteButton = styled.TouchableOpacity`
+  background-color: #f8d7da; 
+  border-radius: 50px;      
+  width: 40px;              
+  height: 40px;             
+  align-items: center;      
+  justify-content: center;  
+  margin-right: 10px;       
 `;
 
 export const Data = styled.Text`
