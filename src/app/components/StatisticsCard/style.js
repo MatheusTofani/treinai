@@ -32,5 +32,4 @@ export const StatCircle = styled.View`
 border-width: 0.3px;
 border-radius: 50px;
 width: 32%;
-
 `;
