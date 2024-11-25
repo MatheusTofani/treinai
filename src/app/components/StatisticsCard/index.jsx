@@ -20,6 +20,7 @@ const StatisticCard = ({ total, noMes, noDia }) => {
         <StatValue>{noDia}</StatValue>
       </StatCircle>       
     </Card>
+    
   );
 };
 
