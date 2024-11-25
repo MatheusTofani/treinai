@@ -1,18 +1,24 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { Card, StatText, StatValue } from './style'; // Vamos criar os estilos no próximo passo
+import { Card, StatCircle, StatText, StatValue } from './style'; // Vamos criar os estilos no próximo passo
 
 const StatisticCard = ({ total, noMes, noDia }) => {
   return (
     <Card>
-      <StatText>Total de Treinos:</StatText>
-      <StatValue>{total}</StatValue>
+      <StatCircle>
+        <StatText>Total de Treinos</StatText>
+        <StatValue>{total}</StatValue>
+      </StatCircle>
 
-      <StatText>Treinos no Mês:</StatText>
-      <StatValue>{noMes}</StatValue>
+      <StatCircle>
+        <StatText>Treinos no Mês</StatText>
+        <StatValue>{noMes}</StatValue>
+      </StatCircle>
 
-      <StatText>Treinos no Dia:</StatText>
-      <StatValue>{noDia}</StatValue>
+      <StatCircle>
+        <StatText>Treinos no Dia</StatText>
+        <StatValue>{noDia}</StatValue>
+      </StatCircle>       
     </Card>
   );
 };
