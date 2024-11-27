@@ -13,6 +13,7 @@ import RankingScreen from './src/app/Screen/RankingScreen';
 import WorkoutScreen from './src/app/Screen/WorkoutScreen';
 import DefinirObjetivos from './src/app/containers/DefinirObjetivos';
 import Register from './src/app/Screen/RegisterScreen';
+import Onboarding from './src/app/Screen/OnboardingScreen';
 import NotasEReflexoes from './src/app/containers/NotasEReflexoes';
 import RegistrarTreino from './src/app/containers/RegistrarTreino';
 import TreinoSugeridoPorIA from './src/app/containers/TreinoSugeridoPorIA';
@@ -27,7 +28,7 @@ export default function App() {
   useEffect(() => {
     const unsubscribe = navigationRef?.addListener('state', () => {
       const routeName = navigationRef.getCurrentRoute()?.name;
-      setShowFooter(routeName !== 'Login' && routeName !== 'Register'); 
+      setShowFooter(routeName !== 'Login' && routeName !== 'Register' && routeName !== 'Onboarding'); 
     });
 
     return unsubscribe;
@@ -50,6 +51,7 @@ export default function App() {
               <Stack.Screen name="RegistrarTreino" component={RegistrarTreino} />
               <Stack.Screen name="TreinoSugeridoPorIA" component={TreinoSugeridoPorIA} />
               <Stack.Screen name="Register" component={Register} />
+              <Stack.Screen name="Onboarding" component={Onboarding} />
             </Stack.Navigator>
             {showFooter && <Footer />}
           </NavigationContainer>

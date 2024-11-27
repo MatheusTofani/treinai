@@ -32,7 +32,7 @@ const Register = ({ navigation }) => {
 
       setUser(user.uid);
 
-      navigation.navigate("Stats");
+      navigation.navigate("Onboarding");
   
       // Exibir mensagem de sucesso
       Alert.alert("Sucesso", "Usuário registrado com sucesso!");
