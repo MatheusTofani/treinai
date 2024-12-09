@@ -22,6 +22,12 @@
     },
     "web": {
       "favicon": ""
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "16e1afa8-bd26-4fe2-8125-6c18579a94bb"
+      }
+    },
+    "owner": "pedrotofani"
   }
 }
