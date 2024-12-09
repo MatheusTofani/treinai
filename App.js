@@ -3,6 +3,8 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { NavigationContainer, useNavigationContainerRef } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import registerNNPushToken from 'native-notify';
+
 
 import { UserProvider } from './src/app/contexts/UserContext';
 
@@ -18,10 +20,14 @@ import NotasEReflexoes from './src/app/containers/NotasEReflexoes';
 import RegistrarTreino from './src/app/containers/RegistrarTreino';
 import TreinoSugeridoPorIA from './src/app/containers/TreinoSugeridoPorIA';
 import Login from './src/app/Screen/LoginTela';
+import { requestNotificationPermissions } from './src/app/services/notifications';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+
+  registerNNPushToken(25283, '0w6Y8m0uuaONK6C8kxeNia');
+  
   const [showFooter, setShowFooter] = useState(false);
   const navigationRef = useNavigationContainerRef();
 
@@ -33,6 +39,17 @@ export default function App() {
 
     return unsubscribe;
   }, [navigationRef]);
+
+  useEffect(() => {
+    const setupNotifications = async () => {
+      const hasPermission = await requestNotificationPermissions();
+      if (!hasPermission) {
+        console.log('O usuário não concedeu permissões para notificações.');
+      }
+    };
+
+    setupNotifications();
+  }, []);
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>

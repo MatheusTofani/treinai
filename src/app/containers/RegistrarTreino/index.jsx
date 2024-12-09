@@ -4,7 +4,9 @@ import Collapsible from 'react-native-collapsible';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { firestore } from '../../../firebaseConfig'; // Importando a instância do Firestore
 import { useUser } from '../../contexts/UserContext'; // Obtendo o userId do contexto
+
 import { addDoc, collection, doc, setDoc } from 'firebase/firestore'; // Funções do Firestore
+import { scheduleLocalNotification } from '../../services/notifications';
 
 const RegistrarTreino = () => {
   const { userId } = useUser(); // Obtém o userId do contexto
@@ -18,6 +20,11 @@ const RegistrarTreino = () => {
     tempoDescanso: '',
     nota: '',
   });
+
+  const handleScheduleNotification = () => {
+    scheduleLocalNotification('Lembrete de Treino!', 'Treino Adicionado com Sucesso', 15);
+  };
+
   
 
   // Função para adicionar um exercício (treino)
@@ -44,6 +51,7 @@ const RegistrarTreino = () => {
       // Atualiza o estado local
       setExercicios([...exercicios, { ...exercicio, treinoId: treinoDocRef.id }]);
       setNovoExercicio('');
+      handleScheduleNotification()
       setMostrarFormularioExercicio(false);
     } catch (error) {
       Alert.alert(error.message);
